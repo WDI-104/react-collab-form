@@ -66,34 +66,34 @@ const Form = () => {
         <br />
         <div>
           <label>
-            Question 2 Goes Here:
+            Which are water-type Pokemons?
             <br />
             <input
               type="checkbox"
               name="question2"
-              value="Option 1"
-              checked={answers.question2.includes('Option 1')}
+              value="Squirtle"
+              checked={answers.question2.includes('Squirtle')}
               onChange={handleInputChange}
             />
-            Option 1
+            Squirtle
             <br />
             <input
               type="checkbox"
               name="question2"
-              value="Option 2"
-              checked={answers.question2.includes('Option 2')}
+              value="Pikachu"
+              checked={answers.question2.includes('Pikachu')}
               onChange={handleInputChange}
             />
-            Option 2
+            Pikachu
             <br />
             <input
               type="checkbox"
               name="question2"
-              value="Option 3"
-              checked={answers.question2.includes('Option 3')}
+              value="Psyduck"
+              checked={answers.question2.includes('Psyduck')}
               onChange={handleInputChange}
             />
-            Option 3
+            Psyduck
           </label>
         </div>
         <br />
@@ -108,39 +108,7 @@ const Form = () => {
             />
           </label>
         </div>
-        <br />
-        <div>
-          <label>
-            Which are water-type Pokemons?
-            <br />
-            <input
-              type="checkbox"
-              name="skinWalkers"
-              value="Squirtle"
-              checked={answers.skinWalkers.includes('Squirtle')}
-              onChange={handleInputChange}
-            />
-            Squirtle
-            <br />
-            <input
-              type="checkbox"
-              name="skinWalkers"
-              value="Pikachu"
-              checked={answers.skinWalkers.includes('Pikachu')}
-              onChange={handleInputChange}
-            />
-            Pikachu
-            <br />
-            <input
-              type="checkbox"
-              name="skinWalkers"
-              value="Psyduck"
-              checked={answers.skinWalkers.includes('Psyduck')}
-              onChange={handleInputChange}
-            />
-            Psyduck
-          </label>
-        </div>
+
         <br />
         <button type="submit">Submit</button>
       </form>
