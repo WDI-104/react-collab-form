@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import McFour from './McFour';
 
 const Form = () => {
   // State to hold the answers
@@ -6,7 +7,7 @@ const Form = () => {
     // ⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
     question1: '',//⛔️
     question2: [],// Multiple answers will be stored in an array ✅ 
-    question3: '',//⛔️
+    graduation: '',//⛔️
     skinWalkers: '',// SkinWalkers question ✅ add skinWalkers
   });
 
@@ -23,7 +24,7 @@ const Form = () => {
       ...submittedAnswers,
       { question: `Where's Rachel?`, answer: answers.batMan },//✅
       { question: 'Which are water-type Pokemons?', answer: answers.question2 },//⛔️
-      { question: 'Question 3 Goes Here', answer: answers.question3 },//⛔️
+      { question: 'What are your plans when you graduate?', answer: answers.graduation },//⛔️
       { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },//✅
     ]);
 
@@ -32,7 +33,7 @@ const Form = () => {
         // ⛔️ Replace the existing questions with new questions here checkout skinWalkers example ⛔️
       batMan: '',//✅
       question2: [],// Multiple answers will be stored in an array ✅ 
-      question3: '',//⛔️
+      graduation: '',//⛔️
       skinWalkers: '',//✅
     });
   };
@@ -100,17 +101,49 @@ const Form = () => {
         <br />
         <div>
           <label>
-            Question 3 Goes Here:
+            What are your plans for graduation:
+          </label>
+
+          <br />
+          <label>
             <input
-              type="text"
-              name="question3"
-              value={answers.question3}
+              type="radio"
+              name='graduation'
+              value="Developer Role"
               onChange={handleInputChange}
             />
+            Developer Role
+          </label>
+          <label>
+            <input
+              type="radio"
+              name='graduation'
+              value="Freelancer"
+              onChange={handleInputChange}
+            />
+            Freelancer
+          </label>
+          <label>
+            <input
+              type="radio"
+              name='graduation'
+              value="Personal Project"
+              onChange={handleInputChange}
+            />
+            Personal Project
+          </label>
+          <label>
+            <input
+              type="radio"
+              name='graduation'
+              value="More School"
+              onChange={handleInputChange}
+            />
+            More School
           </label>
         </div>
 
-         <div>
+      <div>
           <h1>Do you believe in SkinWalkers?</h1>
            <label>
             <input               type="radio"
