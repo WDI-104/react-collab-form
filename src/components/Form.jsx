@@ -41,6 +41,7 @@ const Form = () => {
   // Handle input change for questions
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value)
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
       [name]: value,
@@ -88,9 +89,10 @@ const Form = () => {
           </label>
 
           <br />
-          <label htmlFor="">
+          <label>
             <input
               type="radio"
+              name='graduation'
               value="Developer Role"
               onChange={handleInputChange}
             />
@@ -99,24 +101,27 @@ const Form = () => {
           <label>
             <input
               type="radio"
+              name='graduation'
               value="Freelancer"
-              onchange={handleInputChange}
+              onChange={handleInputChange}
             />
             Freelancer
           </label>
           <label>
             <input
               type="radio"
+              name='graduation'
               value="Personal Project"
-              onchange={handleInputChange}
+              onChange={handleInputChange}
             />
             Personal Project
           </label>
           <label>
             <input
               type="radio"
+              name='graduation'
               value="More School"
-              onchange={handleInputChange}
+              onChange={handleInputChange}
             />
             More School
           </label>
