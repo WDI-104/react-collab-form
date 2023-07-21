@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 const Form = () => {
   // State to hold the answers
   const [answers, setAnswers] = useState({
-    question1: '',
-    question2: '',
-    question3: '',
-    skinWalkers: '', // SkinWalkers question
+    //⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
+    question1: '',//⛔️
+    question2: '',//⛔️
+    question3: '',//⛔️
+    skinWalkers: '', // SkinWalkers question ✅ 
   });
 
   // State to store the submitted answers as a list
@@ -17,20 +18,22 @@ const Form = () => {
     e.preventDefault();
 
     // Add the current answers to the submitted answers list
+    // ⛔️ Replace the existing question entries with new question entries here see skinWalkers example ⛔️ 
     setSubmittedAnswers([
       ...submittedAnswers,
-      { question: 'Question 1 Goes Here', answer: answers.question1 },
-      { question: 'Question 2 Goes Here', answer: answers.question2 },
-      { question: 'Question 3 Goes Here', answer: answers.question3 },
-      { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },
+      { question: 'Question 1 Goes Here', answer: answers.question1 },//⛔️
+      { question: 'Question 2 Goes Here', answer: answers.question2 },//⛔️
+      { question: 'Question 3 Goes Here', answer: answers.question3 },//⛔️
+      { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },//✅
     ]);
 
     // Clear the form after submission
     setAnswers({
-      question1: '',
-      question2: '',
-      question3: '',
-      skinWalkers: '',
+        // ⛔️ Replace the existing questions with new questions here checkout skinWalkers example ⛔️
+      question1: '',//⛔️
+      question2: '',//⛔️
+      question3: '',//⛔️
+      skinWalkers: '',//✅
     });
   };
 
@@ -43,24 +46,29 @@ const Form = () => {
     }));
   };
 
+  //⛔️ Each team member can add a new question ⛔️
   return (
+    
     <div className='form'>
       <h1>Form</h1>
       <hr style={{width: "65%"}}/>
       <form onSubmit={handleOnSubmit}>
+
         {/* Input fields for answers */}
         <div>
           <label>
-            Question 1 Goes Here:
+            Question 1 Goes Here: 
             <input
               type="text"
-              name="question1"
-              value={answers.question1}
-              onChange={handleInputChange}
+            name="question1"
+            value={answers.question1}
+            onChange={handleInputChange}
             />
           </label>
         </div>
+
         <br />
+
         <div>
           <label>
             Question 2 Goes Here:
@@ -72,7 +80,9 @@ const Form = () => {
             />
           </label>
         </div>
+
         <br />
+
         <div>
           <label>
             Question 3 Goes Here:
@@ -84,6 +94,7 @@ const Form = () => {
             />
           </label>
         </div>
+
         <br />
 
         {/* SkinWalkers question */}
@@ -99,6 +110,7 @@ const Form = () => {
             />
             Yes
           </label>
+
           <label>
             <input
               type="radio"
@@ -109,13 +121,16 @@ const Form = () => {
             />
             No
           </label>
+
         </div>
         <br />
 
         {/* Submit button */}
         <button type="submit">Submit</button>
       </form>
+
     <hr style={{width: "65%"}}/>
+
       {/* Display submitted answers as a list */}
       <div>
         <h2>Submitted Answers:</h2>
@@ -128,6 +143,7 @@ const Form = () => {
           ))}
         </ul>
       </div>
+
     </div>
   );
 };
