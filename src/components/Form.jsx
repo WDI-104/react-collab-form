@@ -113,10 +113,11 @@ const Form = () => {
          <div>
           <h1>Do you believe in SkinWalkers?</h1>
            <label>
-            <input               type="radio"
-               name="Do you believe in SkinWalkers?"
+            <input               
+            type="radio"
+               name="skinWalkers"
               value="yes"
-               checked={answers['Do you believe in SkinWalkers?'] === 'yes'}
+               checked={answers.skinWalkers === 'yes'}
                onChange={handleInputChange}
              />
              Yes
@@ -124,9 +125,9 @@ const Form = () => {
            <label>
             <input
                type="radio"
-               name="Do you believe in SkinWalkers?"
+               name="skinWalkers"
                value="no"
-               checked={answers['Do you believe in SkinWalkers?'] === 'no'}
+               checked={answers.skinWalkers === 'no'}
                onChange={handleInputChange}
              />
             No
