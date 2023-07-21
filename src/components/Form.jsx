@@ -7,7 +7,7 @@ const Form = () => {
     question1: '',//⛔️
     question2: [],// Multiple answers will be stored in an array ✅ 
     question3: '',//⛔️
-    skinWalkers: '', // SkinWalkers question ✅ 
+    skinWalkers: '',// SkinWalkers question ✅ add skinWalkers
   });
 
   // State to store the submitted answers as a list
@@ -22,7 +22,7 @@ const Form = () => {
     setSubmittedAnswers([
       ...submittedAnswers,
       { question: `Where's Rachel?`, answer: answers.batMan },//✅
-      { question: 'Question 2 Goes Here', answer: answers.question2 },//⛔️
+      { question: 'Which are water-type Pokemons?', answer: answers.question2 },//⛔️
       { question: 'Question 3 Goes Here', answer: answers.question3 },//⛔️
       { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },//✅
     ]);
@@ -110,6 +110,29 @@ const Form = () => {
           </label>
         </div>
 
+         <div>
+          <h1>Do you believe in SkinWalkers?</h1>
+           <label>
+            <input               type="radio"
+               name="Do you believe in SkinWalkers?"
+              value="yes"
+               checked={answers['Do you believe in SkinWalkers?'] === 'yes'}
+               onChange={handleInputChange}
+             />
+             Yes
+           </label>
+           <label>
+            <input
+               type="radio"
+               name="Do you believe in SkinWalkers?"
+               value="no"
+               checked={answers['Do you believe in SkinWalkers?'] === 'no'}
+               onChange={handleInputChange}
+             />
+            No
+          </label>
+        </div>
+
         <br />
         <button type="submit">Submit</button>
       </form>
@@ -132,3 +155,4 @@ const Form = () => {
 };
 
 export default Form;
+
