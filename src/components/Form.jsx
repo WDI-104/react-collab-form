@@ -3,15 +3,9 @@ import React, { useState } from 'react';
 const Form = () => {
   // State to hold the answers
   const [answers, setAnswers] = useState({
-<<<<<<< HEAD
-    //⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
-    question1: '',//⛔️ 
-    question2: '',//⛔️
-=======
     // ⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
     question1: '',//⛔️
     question2: [],// Multiple answers will be stored in an array ✅ 
->>>>>>> 7b8ada2f7a3f59eecd0ad4aa0b49ff6547aab31c
     question3: '',//⛔️
     skinWalkers: '',// SkinWalkers question ✅ add skinWalkers
   });
@@ -28,7 +22,7 @@ const Form = () => {
     setSubmittedAnswers([
       ...submittedAnswers,
       { question: `Where's Rachel?`, answer: answers.batMan },//✅
-      { question: 'Question 2 Goes Here', answer: answers.question2 },//⛔️
+      { question: 'Which are water-type Pokemons?', answer: answers.question2 },//⛔️
       { question: 'Question 3 Goes Here', answer: answers.question3 },//⛔️
       { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },//✅
     ]);
@@ -116,6 +110,29 @@ const Form = () => {
           </label>
         </div>
 
+         <div>
+          <h1>Do you believe in SkinWalkers?</h1>
+           <label>
+            <input               type="radio"
+               name="Do you believe in SkinWalkers?"
+              value="yes"
+               checked={answers['Do you believe in SkinWalkers?'] === 'yes'}
+               onChange={handleInputChange}
+             />
+             Yes
+           </label>
+           <label>
+            <input
+               type="radio"
+               name="Do you believe in SkinWalkers?"
+               value="no"
+               checked={answers['Do you believe in SkinWalkers?'] === 'no'}
+               onChange={handleInputChange}
+             />
+            No
+          </label>
+        </div>
+
         <br />
         <button type="submit">Submit</button>
       </form>
@@ -138,3 +155,4 @@ const Form = () => {
 };
 
 export default Form;
+
