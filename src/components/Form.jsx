@@ -44,8 +44,9 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className='form'>
       <h1>Form</h1>
+      <hr style={{width: "65%"}}/>
       <form onSubmit={handleOnSubmit}>
         {/* Input fields for answers */}
         <div>
@@ -114,7 +115,7 @@ const Form = () => {
         {/* Submit button */}
         <button type="submit">Submit</button>
       </form>
-
+    <hr style={{width: "65%"}}/>
       {/* Display submitted answers as a list */}
       <div>
         <h2>Submitted Answers:</h2>
