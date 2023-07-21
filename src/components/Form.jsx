@@ -3,9 +3,15 @@ import React, { useState } from 'react';
 const Form = () => {
   // State to hold the answers
   const [answers, setAnswers] = useState({
+<<<<<<< HEAD
     //⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
     question1: '',//⛔️ 
     question2: '',//⛔️
+=======
+    // ⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
+    question1: '',//⛔️
+    question2: [],// Multiple answers will be stored in an array ✅ 
+>>>>>>> 7b8ada2f7a3f59eecd0ad4aa0b49ff6547aab31c
     question3: '',//⛔️
     skinWalkers: '',// SkinWalkers question ✅ add skinWalkers
   });
@@ -21,7 +27,7 @@ const Form = () => {
     // ⛔️ Replace the existing question entries with new question entries here see skinWalkers example ⛔️ 
     setSubmittedAnswers([
       ...submittedAnswers,
-      { question: 'Question 1 Goes Here', answer: answers.question1 },//⛔️
+      { question: `Where's Rachel?`, answer: answers.batMan },//✅
       { question: 'Question 2 Goes Here', answer: answers.question2 },//⛔️
       { question: 'Question 3 Goes Here', answer: answers.question3 },//⛔️
       { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },//✅
@@ -30,8 +36,8 @@ const Form = () => {
     // Clear the form after submission
     setAnswers({
         // ⛔️ Replace the existing questions with new questions here checkout skinWalkers example ⛔️
-      question1: '',//⛔️
-      question2: '',//⛔️
+      batMan: '',//✅
+      question2: [],// Multiple answers will be stored in an array ✅ 
       question3: '',//⛔️
       skinWalkers: '',//✅
     });
@@ -39,50 +45,65 @@ const Form = () => {
 
   // Handle input change for questions
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
-      [name]: value,
+      [name]: type === 'checkbox' ? (checked ? [...prevAnswers[name], value] : prevAnswers[name].filter(item => item !== value)) : value,
     }));
   };
 
   //⛔️ Each team member can add a new question ⛔️
   return (
-    
     <div className='form'>
       <h1>Form</h1>
-      <hr style={{width: "65%"}}/>
+      <hr style={{ width: "65%" }} />
       <form onSubmit={handleOnSubmit}>
-
-        {/* Input fields for answers */}
         <div>
           <label>
-            Question 1 Goes Here: 
+          Where's Rachel? 
             <input
-              type="text"
-            name="question1"
-            value={answers.question1}
+            placeholder='WHERE IS SHE!!!'
+            type="text"
+            name="batMan"
+            value={answers.batMan}
             onChange={handleInputChange}
             />
           </label>
         </div>
-
         <br />
-
         <div>
           <label>
-            Question 2 Goes Here:
+            Which are water-type Pokemons?
+            <br />
             <input
-              type="text"
+              type="checkbox"
               name="question2"
-              value={answers.question2}
+              value="Squirtle"
+              checked={answers.question2.includes('Squirtle')}
               onChange={handleInputChange}
             />
+            Squirtle
+            <br />
+            <input
+              type="checkbox"
+              name="question2"
+              value="Pikachu"
+              checked={answers.question2.includes('Pikachu')}
+              onChange={handleInputChange}
+            />
+            Pikachu
+            <br />
+            <input
+              type="checkbox"
+              name="question2"
+              value="Psyduck"
+              checked={answers.question2.includes('Psyduck')}
+              onChange={handleInputChange}
+            />
+            Psyduck
           </label>
         </div>
-
         <br />
-
         <div>
           <label>
             Question 3 Goes Here:
@@ -96,54 +117,22 @@ const Form = () => {
         </div>
 
         <br />
-
-        {/* SkinWalkers question */}
-        <div>
-          <h1>Do you believe in SkinWalkers?</h1>
-          <label>
-            <input
-              type="radio"
-              name="skinWalkers"
-              value="yes"
-              checked={answers.skinWalkers === 'yes'}
-              onChange={handleInputChange}
-            />
-            Yes
-          </label>
-
-          <label>
-            <input
-              type="radio"
-              name="skinWalkers"
-              value="no"
-              checked={answers.skinWalkers === 'no'}
-              onChange={handleInputChange}
-            />
-            No
-          </label>
-
-        </div>
-        <br />
-
-        {/* Submit button */}
         <button type="submit">Submit</button>
       </form>
 
-    <hr style={{width: "65%"}}/>
+      <hr style={{ width: "65%" }} />
 
-      {/* Display submitted answers as a list */}
       <div>
         <h2>Submitted Answers:</h2>
         <ul>
           {submittedAnswers.map((item, index) => (
             <li key={index}>
               <strong>{item.question}: </strong>
-              {item.answer}
+              {Array.isArray(item.answer) ? item.answer.join(', ') : item.answer}
             </li>
           ))}
         </ul>
       </div>
-
     </div>
   );
 };
