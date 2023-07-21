@@ -7,7 +7,7 @@ const Form = () => {
     question1: '',//⛔️ 
     question2: '',//⛔️
     question3: '',//⛔️
-    skinWalkers: '',// SkinWalkers question ✅ 
+    skinWalkers: '',// SkinWalkers question ✅ add skinWalkers
   });
 
   // State to store the submitted answers as a list
