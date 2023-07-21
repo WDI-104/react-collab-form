@@ -21,7 +21,7 @@ const Form = () => {
     // ⛔️ Replace the existing question entries with new question entries here see skinWalkers example ⛔️ 
     setSubmittedAnswers([
       ...submittedAnswers,
-      { question: 'Question 1 Goes Here', answer: answers.question1 },//⛔️
+      { question: `Where's Rachel?`, answer: answers.batMan },//✅
       { question: 'Question 2 Goes Here', answer: answers.question2 },//⛔️
       { question: 'Question 3 Goes Here', answer: answers.question3 },//⛔️
       { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },//✅
@@ -30,7 +30,7 @@ const Form = () => {
     // Clear the form after submission
     setAnswers({
         // ⛔️ Replace the existing questions with new questions here checkout skinWalkers example ⛔️
-      question1: '',//⛔️
+      batMan: '',//✅
       question2: '',//⛔️
       question3: '',//⛔️
       skinWalkers: '',//✅
@@ -57,11 +57,12 @@ const Form = () => {
         {/* Input fields for answers */}
         <div>
           <label>
-            Question 1 Goes Here: 
+          Where's Rachel? 
             <input
-              type="text"
-            name="question1"
-            value={answers.question1}
+            placeholder='WHERE IS SHE!!!'
+            type="text"
+            name="batMan"
+            value={answers.batMan}
             onChange={handleInputChange}
             />
           </label>
