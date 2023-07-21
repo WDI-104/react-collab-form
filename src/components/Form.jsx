@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 const Form = () => {
   // State to hold the answers
   const [answers, setAnswers] = useState({
-    //⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
+    // ⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
     question1: '',//⛔️
-    question2: '',//⛔️
+    question2: [],// Multiple answers will be stored in an array ✅ 
     question3: '',//⛔️
     skinWalkers: '', // SkinWalkers question ✅ 
   });
@@ -29,9 +29,9 @@ const Form = () => {
 
     // Clear the form after submission
     setAnswers({
-        // ⛔️ Replace the existing questions with new questions here checkout skinWalkers example ⛔️
+      // ⛔️ Replace the existing questions with new questions here checkout skinWalkers example ⛔️
       question1: '',//⛔️
-      question2: '',//⛔️
+      question2: [],// Multiple answers will be stored in an array ✅ 
       question3: '',//⛔️
       skinWalkers: '',//✅
     });
@@ -39,50 +39,64 @@ const Form = () => {
 
   // Handle input change for questions
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
-      [name]: value,
+      [name]: type === 'checkbox' ? (checked ? [...prevAnswers[name], value] : prevAnswers[name].filter(item => item !== value)) : value,
     }));
   };
 
   //⛔️ Each team member can add a new question ⛔️
   return (
-    
     <div className='form'>
       <h1>Form</h1>
-      <hr style={{width: "65%"}}/>
+      <hr style={{ width: "65%" }} />
       <form onSubmit={handleOnSubmit}>
-
-        {/* Input fields for answers */}
         <div>
           <label>
-            Question 1 Goes Here: 
+            Question 1 Goes Here:
             <input
               type="text"
-            name="question1"
-            value={answers.question1}
-            onChange={handleInputChange}
-            />
-          </label>
-        </div>
-
-        <br />
-
-        <div>
-          <label>
-            Question 2 Goes Here:
-            <input
-              type="text"
-              name="question2"
-              value={answers.question2}
+              name="question1"
+              value={answers.question1}
               onChange={handleInputChange}
             />
           </label>
         </div>
-
         <br />
-
+        <div>
+          <label>
+            Question 2 Goes Here:
+            <br />
+            <input
+              type="checkbox"
+              name="question2"
+              value="Option 1"
+              checked={answers.question2.includes('Option 1')}
+              onChange={handleInputChange}
+            />
+            Option 1
+            <br />
+            <input
+              type="checkbox"
+              name="question2"
+              value="Option 2"
+              checked={answers.question2.includes('Option 2')}
+              onChange={handleInputChange}
+            />
+            Option 2
+            <br />
+            <input
+              type="checkbox"
+              name="question2"
+              value="Option 3"
+              checked={answers.question2.includes('Option 3')}
+              onChange={handleInputChange}
+            />
+            Option 3
+          </label>
+        </div>
+        <br />
         <div>
           <label>
             Question 3 Goes Here:
@@ -94,56 +108,56 @@ const Form = () => {
             />
           </label>
         </div>
-
         <br />
-
-        {/* SkinWalkers question */}
         <div>
-          <h1>Do you believe in SkinWalkers?</h1>
           <label>
+            Which are water-type Pokemons?
+            <br />
             <input
-              type="radio"
+              type="checkbox"
               name="skinWalkers"
-              value="yes"
-              checked={answers.skinWalkers === 'yes'}
+              value="Squirtle"
+              checked={answers.skinWalkers.includes('Squirtle')}
               onChange={handleInputChange}
             />
-            Yes
-          </label>
-
-          <label>
+            Squirtle
+            <br />
             <input
-              type="radio"
+              type="checkbox"
               name="skinWalkers"
-              value="no"
-              checked={answers.skinWalkers === 'no'}
+              value="Pikachu"
+              checked={answers.skinWalkers.includes('Pikachu')}
               onChange={handleInputChange}
             />
-            No
+            Pikachu
+            <br />
+            <input
+              type="checkbox"
+              name="skinWalkers"
+              value="Psyduck"
+              checked={answers.skinWalkers.includes('Psyduck')}
+              onChange={handleInputChange}
+            />
+            Psyduck
           </label>
-
         </div>
         <br />
-
-        {/* Submit button */}
         <button type="submit">Submit</button>
       </form>
 
-    <hr style={{width: "65%"}}/>
+      <hr style={{ width: "65%" }} />
 
-      {/* Display submitted answers as a list */}
       <div>
         <h2>Submitted Answers:</h2>
         <ul>
           {submittedAnswers.map((item, index) => (
             <li key={index}>
               <strong>{item.question}: </strong>
-              {item.answer}
+              {Array.isArray(item.answer) ? item.answer.join(', ') : item.answer}
             </li>
           ))}
         </ul>
       </div>
-
     </div>
   );
 };
