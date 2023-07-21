@@ -4,10 +4,10 @@ const Form = () => {
   // State to hold the answers
   const [answers, setAnswers] = useState({
     //⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
-    question1: '',//⛔️
+    question1: '',//⛔️ 
     question2: '',//⛔️
     question3: '',//⛔️
-    skinWalkers: '', // SkinWalkers question ✅ 
+    skinWalkers: '',// SkinWalkers question ✅ 
   });
 
   // State to store the submitted answers as a list
