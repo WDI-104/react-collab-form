@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const ShortAnswer = () => {
-  const [ShortAnswer, setShortAnswer] = useState(';');
+  const [ShortAnswer, setShortAnswer] = useState('');
   return (
     <div>
       <label>Short Answer</label>
