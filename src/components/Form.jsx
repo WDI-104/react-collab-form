@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import McFour from './McFour';
 
 const Form = () => {
   // State to hold the answers
@@ -6,7 +7,7 @@ const Form = () => {
     //⛔️ Replace the existing questions with new questions here example question4 => skinWalkers⛔️
     question1: '',//⛔️
     question2: '',//⛔️
-    question3: '',//⛔️
+    graduation: '',//⛔️
     skinWalkers: '', // SkinWalkers question ✅ 
   });
 
@@ -23,7 +24,7 @@ const Form = () => {
       ...submittedAnswers,
       { question: 'Question 1 Goes Here', answer: answers.question1 },//⛔️
       { question: 'Question 2 Goes Here', answer: answers.question2 },//⛔️
-      { question: 'Question 3 Goes Here', answer: answers.question3 },//⛔️
+      { question: 'What are your plans when you graduate?', answer: answers.graduation },//⛔️
       { question: 'Do you believe in SkinWalkers?', answer: answers.skinWalkers },//✅
     ]);
 
@@ -32,7 +33,7 @@ const Form = () => {
         // ⛔️ Replace the existing questions with new questions here checkout skinWalkers example ⛔️
       question1: '',//⛔️
       question2: '',//⛔️
-      question3: '',//⛔️
+      graduation: '',//⛔️
       skinWalkers: '',//✅
     });
   };
@@ -48,21 +49,19 @@ const Form = () => {
 
   //⛔️ Each team member can add a new question ⛔️
   return (
-    
-    <div className='form'>
+    <div className="form">
       <h1>Form</h1>
-      <hr style={{width: "65%"}}/>
+      <hr style={{ width: "65%" }} />
       <form onSubmit={handleOnSubmit}>
-
         {/* Input fields for answers */}
         <div>
           <label>
-            Question 1 Goes Here: 
+            Question 1 Goes Here:
             <input
               type="text"
-            name="question1"
-            value={answers.question1}
-            onChange={handleInputChange}
+              name="question1"
+              value={answers.question1}
+              onChange={handleInputChange}
             />
           </label>
         </div>
@@ -85,13 +84,41 @@ const Form = () => {
 
         <div>
           <label>
-            Question 3 Goes Here:
+            What are your plans for graduation:
+          </label>
+
+          <br />
+          <label htmlFor="">
             <input
-              type="text"
-              name="question3"
-              value={answers.question3}
+              type="radio"
+              value="Developer Role"
               onChange={handleInputChange}
             />
+            Developer Role
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Freelancer"
+              onchange={handleInputChange}
+            />
+            Freelancer
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Personal Project"
+              onchange={handleInputChange}
+            />
+            Personal Project
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="More School"
+              onchange={handleInputChange}
+            />
+            More School
           </label>
         </div>
 
@@ -105,7 +132,7 @@ const Form = () => {
               type="radio"
               name="skinWalkers"
               value="yes"
-              checked={answers.skinWalkers === 'yes'}
+              checked={answers.skinWalkers === "yes"}
               onChange={handleInputChange}
             />
             Yes
@@ -116,12 +143,11 @@ const Form = () => {
               type="radio"
               name="skinWalkers"
               value="no"
-              checked={answers.skinWalkers === 'no'}
+              checked={answers.skinWalkers === "no"}
               onChange={handleInputChange}
             />
             No
           </label>
-
         </div>
         <br />
 
@@ -129,7 +155,7 @@ const Form = () => {
         <button type="submit">Submit</button>
       </form>
 
-    <hr style={{width: "65%"}}/>
+      <hr style={{ width: "65%" }} />
 
       {/* Display submitted answers as a list */}
       <div>
@@ -143,7 +169,6 @@ const Form = () => {
           ))}
         </ul>
       </div>
-
     </div>
   );
 };
